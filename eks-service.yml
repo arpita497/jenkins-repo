@@ -8,5 +8,5 @@ spec:
     app: tomcat
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 9090
+      port: 8080
+      targetPort: 8080
