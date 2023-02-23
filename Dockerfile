@@ -1,5 +1,5 @@
 FROM tomcat:8
-RUN rm demo*
+RUN rm /usr/local/tomcat/webapps/demo*
 ARG host_name=3.109.200.151:8081
 ARG artifact_id=demo
 ARG version=4.0.0
