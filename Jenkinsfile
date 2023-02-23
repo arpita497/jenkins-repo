@@ -26,24 +26,33 @@ node () {
     }
     
     stage ('Upload artifact to nexus'){
-        sh '''
-            nexusArtifactUploader artifacts: [[artifactId: 'demo', classifier: '', file: 'target/demo-4.0.0.war', type: 'war']], credentialsId: 'nexus-admin', groupId: 'com.domain', nexusUrl: '15.206.186.206:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'tomcat-nexus-repo', version: '4.0.0'
+        
             
-        '''
+               
+                   
+                    nexusArtifactUploader artifacts: [
+                    [
+                        artifactId: 'demo',
+                        classifier: '',
+                        file: 'target/demo-4.0.0.war',
+                        type: 'war'
+                    ]
+                ],
+                    credentialsId: 'nexus-admin',
+                    groupId: 'com.domain',
+                    nexusUrl: '3.109.200.151:8081',
+                    nexusVersion: 'nexus3',
+                    protocol: 'http',
+                    repository: 'tomcat',
+                    version: '4.0.0'
+                    echo 'Artifact uploaded to nexus repository'
+                
+            
+        
+            
+       
     }
 
-    
-  /*  stage ('maven JFrog integration') {
-        tool name: 'maven', type: 'maven'
-            withCredentials([string(credentialsId: '083a6b4c-3e4f-479c-910a-eba44faee6f7', variable: 'Jfrog-token')]) {
-          sh  '''
-          cd ./starter-code/starter-code/
-            mvn --version
-            mvn clean deploy -s ./settings.xml -Drepo.username=arpita.patnaik497@gmail.com -Drepo.password="${Jfrog-token}"
-                
-            '''
-            }
-    }*/
     stage ('Docker image dynamic build'){
         sh '''
             docker image build -t apacheimage1 .
@@ -55,8 +64,9 @@ node () {
     
     stage ('eks-deployment'){
         sh  '''
-            kubectl apply -f eks-service.yml
+            
             sed -i "s/latest/$BUILD_ID/g" Deployment.yml
+            kubectl apply -f eks-service.yml
             kubectl apply -f Deployment.yml
                 
         '''
