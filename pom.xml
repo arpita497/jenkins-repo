@@ -4,7 +4,7 @@
   <groupId>com.domain</groupId>
   <artifactId>demo</artifactId>
   <packaging>war</packaging>
-  <version>4.0.0</version>
+  <version>5.1.0</version>
   <name>demo</name>
   <url>https://github.com/tongueroo/demo-java</url>
   <build>
