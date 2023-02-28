@@ -48,6 +48,11 @@
     </dependency>
   </dependencies>
   <distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>demo</name>
+        <url>https://apat3.jfrog.io/artifactory/demo/</url>
+    </repository>
     <snapshotRepository>
         <id>snapshots</id>
         <name>demo</name>
