@@ -50,8 +50,8 @@
   <distributionManagement>
     <snapshotRepository>
         <id>snapshots</id>
-        <name>a0f1yioqqyskb-artifactory-primary-0-snapshots</name>
-        <url>https://apat3.jfrog.io/artifactory/libs-snapshot</url>
+        <name>demo</name>
+        <url>https://apat3.jfrog.io/artifactory/demo/</url>
     </snapshotRepository>
 </distributionManagement>
 </project>
